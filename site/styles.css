@@ -60,7 +60,7 @@ h3{font-size:1.5rem;font-weight:800;letter-spacing:-.01em;line-height:1.2}
 
 /* hero */
 .hero{padding:28px 0 32px;text-align:center}
-.hero h1{margin:0 auto 14px;max-width:13ch}
+.hero h1{margin:0 auto;max-width:13ch}
 .hero .sub{max-width:34ch;margin:0 auto}
 .vsl-wrap{padding:20px var(--gutter) 0}
 .vsl{position:relative;aspect-ratio:16/9;width:100%;max-width:960px;margin:0 auto;border-radius:var(--r-media);overflow:hidden;background:var(--ink);box-shadow:var(--shadow-card)}
