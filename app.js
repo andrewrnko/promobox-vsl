@@ -4,7 +4,7 @@
 // Set ONE of these when the 16:9 video arrives:
 //   src:    '/assets/vsl.mp4'   (self-hosted mp4, plus a poster jpg)
 //   embed:  'https://www.youtube.com/embed/XXXX' or a Vimeo/Wistia embed URL
-const VSL = { src: '', poster: '', embed: '' };
+const VSL = { src: 'assets/vsl.mp4', poster: 'assets/vsl-poster.jpg', embed: '' };
 
 const FORM_ENDPOINT = 'https://promobox-lead.sirjarvisthethird.workers.dev/api/lead';
 
@@ -79,14 +79,14 @@ const FORM_ENDPOINT = 'https://promobox-lead.sirjarvisthethird.workers.dev/api/l
     if (!ok) { status.textContent = 'Name, a 10 digit phone number, and what you need are required.'; return; }
 
     btn.disabled = true; btn.textContent = 'Sending…';
-    const payload = { ...d, page: location.href, ref: document.referrer, source: 'promobox-vsl' };
+    const payload = { ...d, description: '[Lakeside Surf QR · 10% off] ' + (d.description || ''), page: location.href, ref: document.referrer, source: 'promobox-vsl' };
     try {
       const r = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
       if (!r.ok) throw new Error('http ' + r.status);
       f.hidden = true; done.hidden = false;
       done.scrollIntoView({ block: 'center', behavior: 'smooth' });
     } catch (e) {
-      btn.disabled = false; btn.textContent = 'Send';
+      btn.disabled = false; btn.textContent = 'Send and Claim 10% Off';
       status.innerHTML = 'That did not go through. Call or text <a href="tel:+14257379026">425-737-9026</a> and we will take it by phone.';
     }
   });
