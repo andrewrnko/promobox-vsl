@@ -25,7 +25,7 @@ export default {
 
     const lead = {
       name: clean(b.name, 80), phone: clean(b.phone, 40), email: clean(b.email, 120),
-      company: clean(b.company_name, 120), vehicle: clean(b.vehicle, 60),
+      company: clean(b.company_name, 120), need: clean(b.need, 60),
       description: clean(b.description, 2000), page: clean(b.page, 200), ref: clean(b.ref, 200),
     };
     if (!lead.phone && !lead.email) return json({ ok: false, error: 'empty' }, 400);
@@ -38,7 +38,7 @@ export default {
     const text = [
       'New wrap quote request, Promo Box VSL funnel', '',
       `Name:     ${lead.name || '-'}`, `Phone:    ${lead.phone || '-'}`, `Email:    ${lead.email || '-'}`,
-      `Company:  ${lead.company || '-'}`, `Vehicle:  ${lead.vehicle || '-'}`, '',
+      `Company:  ${lead.company || '-'}`, `Need:     ${lead.need || '-'}`, '',
       'Details:', lead.description || '-', '',
       `Page:     ${lead.page || '-'}`, `Referrer: ${lead.ref || '-'}`, `Received: ${new Date().toISOString()}`,
     ].join('\n');
@@ -46,7 +46,7 @@ export default {
     try {
       const r = await fetch(`${AGENTMAIL}/${encodeURIComponent(inbox)}/messages/send`, {
         method: 'POST', headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ to, subject: `Wrap quote: ${lead.name || lead.phone}${lead.vehicle ? ' (' + lead.vehicle + ')' : ''}`, text, ...(lead.email ? { reply_to: [lead.email] } : {}) }),
+        body: JSON.stringify({ to, subject: `Promo Box quote: ${lead.name || lead.phone}${lead.need ? ' (' + lead.need + ')' : ''}`, text, ...(lead.email ? { reply_to: [lead.email] } : {}) }),
       });
       if (!r.ok) return json({ ok: false, error: 'send_failed' }, 502);
     } catch { return json({ ok: false, error: 'send_failed' }, 502); }

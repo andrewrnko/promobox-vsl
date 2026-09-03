@@ -75,8 +75,8 @@ const FORM_ENDPOINT = 'https://promobox-lead.sirjarvisthethird.workers.dev/api/l
     let ok = true;
     ok = need(f.name, d.name.trim().length > 1) && ok;
     ok = need(f.phone, d.phone.replace(/\D/g, '').length >= 10) && ok;
-    ok = need(f.vehicle, !!d.vehicle) && ok;
-    if (!ok) { status.textContent = 'Name, a 10 digit phone number, and the vehicle type are required.'; return; }
+    ok = need(f.need, !!d.need) && ok;
+    if (!ok) { status.textContent = 'Name, a 10 digit phone number, and what you need are required.'; return; }
 
     btn.disabled = true; btn.textContent = 'Sending…';
     const payload = { ...d, page: location.href, ref: document.referrer, source: 'promobox-vsl' };
