@@ -86,7 +86,7 @@ const FORM_ENDPOINT = 'https://promobox-lead.sirjarvisthethird.workers.dev/api/l
       f.hidden = true; done.hidden = false;
       done.scrollIntoView({ block: 'center', behavior: 'smooth' });
     } catch (e) {
-      btn.disabled = false; btn.textContent = 'Send My Quote Request';
+      btn.disabled = false; btn.textContent = 'Send';
       status.innerHTML = 'That did not go through. Call or text <a href="tel:+14257379026">425-737-9026</a> and we will take it by phone.';
     }
   });
