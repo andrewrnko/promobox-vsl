@@ -88,6 +88,15 @@ h3{font-size:1.5rem;font-weight:800;letter-spacing:-.01em;line-height:1.2}
 
 /* sections */
 section{padding:var(--sec-y) 0}
+.services{background:var(--card)}
+.services h2{max-width:16ch}
+.svc-grid{display:grid;gap:10px;margin:22px 0 18px}
+.svc{display:grid;gap:6px;background:var(--white);border-radius:var(--r-card);padding:18px 18px 16px;box-shadow:var(--shadow-card);text-decoration:none;transition:transform var(--fast) var(--ease)}
+.svc:active{transform:scale(.99)}
+.svc strong{font-size:1.125rem;font-weight:800;letter-spacing:-.01em}
+.svc span{font-size:.875rem;color:var(--ink-2);line-height:1.45}
+.svc em{font-style:normal;font-size:.75rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);background:var(--yellow);border-radius:var(--r-pill);padding:4px 10px;justify-self:start;margin-top:4px}
+.svc-note{font-size:.9375rem;color:var(--ink-2)}
 .math{background:var(--card)}
 .math h2{max-width:16ch}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
@@ -167,6 +176,7 @@ form .btn-lg{margin-top:6px}
   .hero .sub{max-width:44ch;font-size:1.125rem}
   .btn-lg{width:auto;min-width:280px}
   .stats{grid-template-columns:repeat(4,1fr);gap:16px}
+  .svc-grid{grid-template-columns:repeat(2,1fr);gap:14px}
   .stat strong{font-size:2.4rem}
   .grid{grid-template-columns:repeat(3,1fr);gap:10px;padding:0 var(--gutter);max-width:var(--max-w);margin:0 auto}
   .grid figcaption{font-size:.75rem}
@@ -193,6 +203,8 @@ form .btn-lg{margin-top:6px}
   .math .stats{grid-column:1/-1;grid-template-columns:repeat(4,1fr);margin:8px 0 0}
   .math-copy{grid-column:2;grid-row:2;align-self:center;font-size:1.125rem;padding-top:8px}
   .grid{grid-template-columns:repeat(4,1fr)}
+  .svc-grid{grid-template-columns:repeat(3,1fr)}
+  .services h2{max-width:20ch}
   .review-list{grid-template-columns:repeat(4,1fr)}
   .sticky-cta{display:none}
   .site-footer .wrap{padding-bottom:40px}
