@@ -29,11 +29,17 @@ const FORM_ENDPOINT = 'https://promobox-lead.sirjarvisthethird.workers.dev/api/l
     box.dataset.state = 'ready';
     const v = document.createElement('video');
     v.src = VSL.src; if (VSL.poster) v.poster = VSL.poster;
-    v.controls = true; v.playsInline = true; v.preload = 'metadata';
-    v.setAttribute('playsinline', '');
+    v.playsInline = true; v.setAttribute('playsinline', ''); v.muted = true; v.loop = false; v.preload = 'auto';
     box.appendChild(v);
+    const sound = document.getElementById('vsl-sound');
     if (VSL.poster) box.querySelector('.vsl-placeholder').style.background = `center/cover url("${VSL.poster}")`;
-    play.addEventListener('click', () => { box.dataset.state = 'playing'; v.play(); });
+    const withSound = () => { v.muted = false; v.currentTime = 0; v.controls = true; sound.hidden = true; v.play(); };
+    // QR visitors: try a muted autoplay so the video is already moving when the page opens.
+    v.play().then(() => { box.dataset.state = 'playing'; sound.hidden = false; }).catch(() => { /* blocked: play button stays */ });
+    play.addEventListener('click', () => { box.dataset.state = 'playing'; withSound(); });
+    sound.addEventListener('click', withSound);
+    v.addEventListener('click', () => { if (v.muted) withSound(); });
+    v.addEventListener('ended', () => { document.getElementById('hero-cta').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
     return;
   }
   // No video yet: the slot stays visible and labelled; the play button is inert.
